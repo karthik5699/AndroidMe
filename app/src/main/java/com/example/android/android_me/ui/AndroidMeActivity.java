@@ -39,13 +39,18 @@ public class AndroidMeActivity extends AppCompatActivity {
             Body_part_fragment head_fragment = new Body_part_fragment();
             // Assign the imageIDs to the list of image ids created in the AndroidImageAssets class
             head_fragment.setmImageIds(AndroidImageAssets.getHeads());
-            head_fragment.setmListIndex(1);
+            int head_index = getIntent().getIntExtra("headIndex", 0);
+            head_fragment.setmListIndex(head_index);
+
             Body_part_fragment body_fragment = new Body_part_fragment();
             body_fragment.setmImageIds(AndroidImageAssets.getBodies());
-            body_fragment.setmListIndex(1);
+            int body_index = getIntent().getIntExtra("bodyIndex", 0);
+            body_fragment.setmListIndex(body_index);
+
             Body_part_fragment leg_fragment = new Body_part_fragment();
             leg_fragment.setmImageIds(AndroidImageAssets.getLegs());
-            leg_fragment.setmListIndex(1);
+            int leg_index = getIntent().getIntExtra("legIndex", 0);
+            leg_fragment.setmListIndex(leg_index);
 
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
@@ -54,6 +59,7 @@ public class AndroidMeActivity extends AppCompatActivity {
                     .add(R.id.leg_container, leg_fragment)
                     .commit();
         }
+
 
     }
 }
